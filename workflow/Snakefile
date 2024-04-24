@@ -1,0 +1,17 @@
+include: "rules/common.smk"
+
+rule all:
+    input:
+        workflow_outputs()
+
+include: "rules/refs.smk"
+include: "rules/intervals.smk"
+include: "rules/fastqc.smk"
+include: "rules/trim.smk"
+include: "rules/align.smk"
+include: "rules/assign_read_groups.smk"
+include: "rules/group_umis.smk"
+include: "rules/mark_duplicates.smk"
+include: "rules/split_n_cigar_reads.smk"
+include: "rules/bqsr.smk"
+include: "rules/variation.smk"

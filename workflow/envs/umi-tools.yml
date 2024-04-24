@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - umi_tools=1.1.5
+  - samtools=1.19.2
