@@ -8,6 +8,7 @@ rule assign_read_groups:
     wrapper:
         "v3.7.0/bio/picard/addorreplacereadgroups"
 
+
 rule assign_read_groups_index:
     input:
         "results/assign_read_groups/bam/{SAMPLE}_{UNIT}.bam",
@@ -15,6 +16,7 @@ rule assign_read_groups_index:
         temp(temp("results/assign_read_groups/bam/{SAMPLE}_{UNIT}.bam.bai")),
     wrapper:
         "v3.7.0/bio/samtools/index"
+
 
 rule assign_read_groups_md5:
     input:

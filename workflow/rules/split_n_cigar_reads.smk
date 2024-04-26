@@ -9,12 +9,10 @@ rule split_n_cigar_reads:
     wrapper:
         "v3.7.0/bio/gatk/splitncigarreads"
 
+
 rule split_n_cigar_reads_md5:
     input:
-        expand(
-            "results/split_n_cigar_reads/bam/{SAMPLE}.bam",
-            SAMPLE=samples["sample"]
-        ),
+        expand("results/split_n_cigar_reads/bam/{SAMPLE}.bam", SAMPLE=samples["sample"]),
     output:
         "results/split_n_cigar_reads/bam/md5.txt",
     shell:

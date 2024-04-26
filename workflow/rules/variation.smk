@@ -12,9 +12,10 @@ rule variation_call:
         gvcf=temp("results/variation/gvcf/{SAMPLE}.g.vcf"),
         gvcf_idx=temp("results/variation/gvcf/{SAMPLE}.g.vcf.idx"),
     params:
-        extra="-dont-use-soft-clipped-bases --standard-min-confidence-threshold-for-calling 20"
+        extra="-dont-use-soft-clipped-bases --standard-min-confidence-threshold-for-calling 20",
     wrapper:
         "v3.7.0/bio/gatk/haplotypecaller"
+
 
 rule variation_combine:
     input:
@@ -28,6 +29,7 @@ rule variation_combine:
     wrapper:
         "v3.7.0/bio/gatk/combinegvcfs"
 
+
 rule variation_genotype:
     input:
         gvcf="results/variation/gvcf/all.g.vcf",
@@ -39,6 +41,7 @@ rule variation_genotype:
         vcf_idx=temp("results/variation/vcf/all.vcf.idx"),
     wrapper:
         "v3.7.0/bio/gatk/genotypegvcfs"
+
 
 rule variation_select:
     input:
@@ -54,6 +57,7 @@ rule variation_select:
     wrapper:
         "v3.7.0/bio/gatk/selectvariants"
 
+
 rule variation_filter:
     input:
         vcf="results/variation/vcf/snvs.vcf",
@@ -64,9 +68,17 @@ rule variation_filter:
         vcf="results/variation/vcf/snvs.filtered.vcf",
         vcf_idx="results/variation/vcf/snvs.filtered.vcf.idx",
     params:
-        filters={"FS": "FS > 60.0", "QD": "QD < 2.0", "MQ": "MQ < 40.0", "SOR": "SOR > 4.0", "MQRankSum": "MQRankSum < -12.5", "ReadPosRankSum": "ReadPosRankSum < -8.0"},
+        filters={
+            "FS": "FS > 60.0",
+            "QD": "QD < 2.0",
+            "MQ": "MQ < 40.0",
+            "SOR": "SOR > 4.0",
+            "MQRankSum": "MQRankSum < -12.5",
+            "ReadPosRankSum": "ReadPosRankSum < -8.0",
+        },
     wrapper:
         "v3.7.0/bio/gatk/variantfiltration"
+
 
 rule variation_cleanup:
     input:
@@ -82,19 +94,20 @@ rule variation_cleanup:
     wrapper:
         "v3.7.0/bio/gatk/selectvariants"
 
+
 rule variation_gvcf_md5:
     input:
-        singles = expand(
-            "results/variation/gvcf/{SAMPLE}.g.vcf",
-            SAMPLE=samples["sample"]
+        singles=expand(
+            "results/variation/gvcf/{SAMPLE}.g.vcf", SAMPLE=samples["sample"]
         ),
-        combined = "results/variation/gvcf/all.g.vcf"
+        combined="results/variation/gvcf/all.g.vcf",
     output:
         "results/variation/gvcf/md5.txt",
     shell:
         """
         md5sum {input.singles} {input.combined} > {output}
         """
+
 
 rule variation_vcf_md5:
     input:
@@ -103,7 +116,7 @@ rule variation_vcf_md5:
             "results/variation/vcf/snvs.vcf",
             "results/variation/vcf/snvs.filtered.vcf",
             "results/variation/vcf/snvs.final.vcf",
-        ]
+        ],
     output:
         "results/variation/vcf/md5.txt",
     shell:

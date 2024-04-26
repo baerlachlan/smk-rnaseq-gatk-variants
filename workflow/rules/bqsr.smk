@@ -11,6 +11,7 @@ rule bqsr_firstpass:
     wrapper:
         "v3.7.0/bio/gatk/baserecalibrator"
 
+
 rule bqsr_apply:
     input:
         bam="results/split_n_cigar_reads/bam/{SAMPLE}.bam",
@@ -22,16 +23,14 @@ rule bqsr_apply:
         bam=temp("results/bqsr/bam/{SAMPLE}.bam"),
         bam_idx=temp("results/bqsr/bam/{SAMPLE}.bai"),
     params:
-        extra="--add-output-sam-program-record"
+        extra="--add-output-sam-program-record",
     wrapper:
         "v3.7.0/bio/gatk/applybqsr"
 
+
 rule bqsr_apply_md5:
     input:
-        expand(
-            "results/bqsr/bam/{SAMPLE}.bam",
-            SAMPLE=samples["sample"]
-        ),
+        expand("results/bqsr/bam/{SAMPLE}.bam", SAMPLE=samples["sample"]),
     output:
         "results/bqsr/bam/md5.txt",
     shell:

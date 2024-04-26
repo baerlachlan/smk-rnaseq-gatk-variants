@@ -7,6 +7,7 @@ rule mark_duplicates:
     wrapper:
         "v3.7.0/bio/picard/markduplicates"
 
+
 rule mark_duplicates_umi:
     input:
         unpack(mark_duplicates_inputs),
@@ -14,9 +15,10 @@ rule mark_duplicates_umi:
         bam=temp("results/mark_duplicates/bam/{SAMPLE}_umi.bam"),
         metrics="results/mark_duplicates/log/{SAMPLE}_umi.metrics.txt",
     params:
-        extra="--BARCODE_TAG BX"
+        extra="--BARCODE_TAG BX",
     wrapper:
         "v3.7.0/bio/picard/markduplicates"
+
 
 rule mark_duplicates_md5:
     input:

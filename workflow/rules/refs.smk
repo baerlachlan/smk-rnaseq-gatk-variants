@@ -9,6 +9,7 @@ rule genome_get:
     wrapper:
         "v3.7.0/bio/reference/ensembl-sequence"
 
+
 rule genome_index:
     input:
         "resources/genome.fa",
@@ -18,6 +19,7 @@ rule genome_index:
         extra="",
     wrapper:
         "v3.7.0/bio/samtools/faidx"
+
 
 rule genome_dict:
     input:
@@ -29,6 +31,7 @@ rule genome_dict:
     wrapper:
         "v3.7.0/bio/picard/createsequencedictionary"
 
+
 rule annotation_get:
     output:
         temp("resources/annotation.gtf"),
@@ -39,6 +42,7 @@ rule annotation_get:
         flavor="",
     wrapper:
         "v3.7.0/bio/reference/ensembl-annotation"
+
 
 rule star_index:
     input:
@@ -52,9 +56,10 @@ rule star_index:
     wrapper:
         "v3.7.0/bio/star/index"
 
+
 rule known_variants_get:
     input:
-        fai="resources/genome.fa.fai"
+        fai="resources/genome.fa.fai",
     output:
         vcf=temp("resources/known_variants.vcf.gz"),
     params:
@@ -64,6 +69,7 @@ rule known_variants_get:
         type="all",
     wrapper:
         "v3.7.0/bio/reference/ensembl-variation"
+
 
 rule known_variants_index:
     input:

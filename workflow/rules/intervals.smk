@@ -4,9 +4,10 @@ rule gtf_to_bed:
     output:
         bed=temp("resources/exons.bed"),
     conda:
-        "../envs/r-base.yml",
+        "../envs/r-base.yml"
     script:
         "../scripts/gtf_to_bed.R"
+
 
 rule bed_to_intervals:
     input:
