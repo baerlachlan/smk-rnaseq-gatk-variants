@@ -145,10 +145,10 @@ def trim_md5_inputs():
         sample_units = units.loc[sample]
         inputs.extend(
             expand(
-                "results/trim/fastq/{SAMPLE}_{UNIT}_{PAIR}.fastq.gz",
+                "results/trim/fastq/{SAMPLE}_{UNIT}_{PAIRTAG}.fastq.gz",
                 SAMPLE=sample_units["sample"],
                 UNIT=sample_units["unit"],
-                PAIR=pair_tags,
+                PAIRTAG=pair_tags,
             )
         )
     return inputs
