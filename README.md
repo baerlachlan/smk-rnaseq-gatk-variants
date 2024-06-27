@@ -2,12 +2,8 @@
 
 This Snakemake workflow implements the [GATK best-practices workflow for RNA-seq short variant discovery](https://gatk.broadinstitute.org/hc/en-us/articles/360035531192-RNAseq-short-variant-discovery-SNPs-Indels).
 
-Complete documentation coming when I finish my PhD... but the workflow is fully functional as far as I am aware.
+## Usage
 
-It has been tested for compatibility with:
-- Single end reads
-- Paired end reads
-- Multiple sequencing units for one or more samples
-- Deduplication with or without UMIs
+Standardised usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=baerlachlan/smk-rnaseq-gatk-variants).
 
-Configuration documentation is however available in `config/README.md`, and as comments in `config/config.yaml`.
+However, if the intention is to run this workflow in an HPC environment where internet access is not be available on compute nodes, downloading the workflow from [Releases](https://github.com/baerlachlan/smk-rnaseq-gatk-variants/releases) is recommended.
