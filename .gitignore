@@ -1,6 +1,0 @@
-logs/
-resources/
-results/
-workflow/profiles/
-.snakemake/
-.test/
