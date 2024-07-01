@@ -1,7 +1,7 @@
 import pandas as pd
 from snakemake.utils import min_version, validate
 
-min_version("8.4.2")
+min_version("8.14.0")
 
 
 configfile: "config/config.yaml"
