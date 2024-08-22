@@ -1,0 +1,185 @@
+default-resources:
+  slurm_extra: "''"
+
+set-threads:
+  ## refs
+  genome_get: 1
+  genome_index: 1
+  genome_dict: 2
+  annotation_get: 1
+  star_index: 8
+  known_variants_get: 1
+  known_variants_index: 2
+  ## intervals
+  gtf_to_bed: 2
+  bed_to_intervals: 2
+  ## fastqc
+  fastqc_raw: 1
+  fastqc_trim: 1
+  fastqc_align: 1
+  ## trim
+  trim_se: 4
+  trim_pe: 4
+  trim_md5: 1
+  ## align
+  align: 16
+  align_index: 4
+  align_md5: 1
+  ## assign_read_groups
+  assign_read_groups: 2
+  assign_read_groups_index: 4
+  assign_read_groups_md5: 2
+  ## group_umis
+  group_umis_se: 2
+  group_umis_pe: 2
+  group_umis_md5: 2
+  ## mark_duplicates
+  mark_duplicates: 2
+  mark_duplicates_umi: 2
+  mark_duplicates_md5: 2
+  ## split_n_cigar_reads
+  split_n_cigar_reads: 8
+  split_n_cigar_reads_md5: 2
+  ## bqsr
+  bqsr_firstpass: 2
+  bqsr_apply: 2
+  bqsr_apply_md5: 2
+  ## variation
+  variation_call: 4
+  variation_combine: 2
+  variation_genotype: 2
+  variation_select: 2
+  variation_filter: 2
+  variation_cleanup: 2
+  variation_gvcf_md5: 2
+  variation_vcf_md5: 2
+
+set-resources:
+  ## refs
+  genome_index:
+    runtime: 10
+    mem_mb: 1024
+  genome_dict:
+    runtime: 10
+    mem_mb: 1024
+  star_index:
+    runtime: 30
+    mem_mb: 32768
+  known_variants_index:
+    runtime: 10
+    mem_mb: 1024
+  ## intervals
+  gtf_to_bed:
+    runtime: 10
+    mem_mb: 2048
+  bed_to_intervals:
+    runtime: 10
+    mem_mb: 1024
+  ## fastqc
+  fastqc_raw:
+    runtime: 30
+    mem_mb: 2048
+  fastqc_trim:
+    runtime: 30
+    mem_mb: 2048
+  fastqc_align:
+    runtime: 30
+    mem_mb: 2048
+  ## trim
+  trim_se:
+    runtime: 30
+    mem_mb: 4096
+  trim_pe:
+    runtime: 30
+    mem_mb: 4096
+  trim_md5:
+    runtime: 60
+    mem_mb: 1024
+  ## align
+  align:
+    runtime: 60
+    mem_mb: 32768
+    slurm_extra: "'--gres=tmpfs:100G'"  # Needs to be about 5x total input fastq size
+  align_index:
+    runtime: 30
+    mem_mb: 2048
+  align_md5:
+    runtime: 120
+    mem_mb: 1024
+  ## assign_read_groups
+  assign_read_groups:
+    runtime: 120
+    mem_mb: 4096
+  assign_read_groups_index:
+    runtime: 30
+    mem_mb: 2048
+  assign_read_groups_md5:
+    runtime: 120
+    mem_mb: 1024
+  ## group_umis
+  group_umis_se:
+    runtime: 120
+    mem_mb: 16384
+    slurm_extra: "'--gres=tmpfs:40G'"
+  group_umis_pe:
+    runtime: 120
+    mem_mb: 16384
+    slurm_extra: "'--gres=tmpfs:40G'"
+  group_umis_md5:
+    runtime: 120
+    mem_mb: 1024
+  ## mark_duplicates
+  mark_duplicates:
+    runtime: 240
+    mem_mb: 32768
+    slurm_extra: "'--gres=tmpfs:40G'"
+  mark_duplicates_umi:
+    runtime: 240
+    mem_mb: 32768
+    slurm_extra: "'--gres=tmpfs:40G'"
+  mark_duplicates_md5:
+    runtime: 120
+    mem_mb: 1024
+  ## split_n_cigar_reads
+  split_n_cigar_reads:
+    runtime: 240
+    mem_mb: 32768
+    slurm_extra: "'--gres=tmpfs:40G'"
+  split_n_cigar_reads_md5:
+    runtime: 60
+    mem_mb: 1024
+  ## bqsr
+  bqsr_firstpass:
+    runtime: 60
+    mem_mb: 2048
+  bqsr_apply:
+    runtime: 120
+    mem_mb: 4096
+  bqsr_apply_md5:
+    runtime: 120
+    mem_mb: 1024
+  ## variation
+  variation_call:
+    runtime: 900
+    mem_mb: 8192
+  variation_combine:
+    runtime: 60
+    mem_mb: 4096
+  variation_genotype:
+    runtime: 900
+    mem_mb: 8192
+  variation_select:
+    runtime: 60
+    mem_mb: 8192
+  variation_filter:
+    runtime: 180
+    mem_mb: 8192
+  variation_cleanup:
+    runtime: 180
+    mem_mb: 8192
+  variation_gvcf_md5:
+    runtime: 120
+    mem_mb: 1024
+  variation_vcf_md5:
+    runtime: 120
+    mem_mb: 1024

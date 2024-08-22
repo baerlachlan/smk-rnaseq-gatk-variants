@@ -8,8 +8,10 @@ rule bqsr_firstpass:
         known_idx="resources/known_variants.vcf.gz.tbi",
     output:
         recal_table=temp("results/bqsr/recal/{SAMPLE}.grp"),
+    params:
+        extra="-RF MappingQualityNotZeroReadFilter",
     wrapper:
-        "v3.7.0/bio/gatk/baserecalibrator"
+        "v4.0.0/bio/gatk/baserecalibrator"
 
 
 rule bqsr_apply:
@@ -25,7 +27,7 @@ rule bqsr_apply:
     params:
         extra="--add-output-sam-program-record",
     wrapper:
-        "v3.7.0/bio/gatk/applybqsr"
+        "v4.0.0/bio/gatk/applybqsr"
 
 
 rule bqsr_apply_md5:

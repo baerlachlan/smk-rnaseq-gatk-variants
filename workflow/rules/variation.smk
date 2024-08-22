@@ -14,7 +14,7 @@ rule variation_call:
     params:
         extra="-dont-use-soft-clipped-bases --standard-min-confidence-threshold-for-calling 20",
     wrapper:
-        "v3.7.0/bio/gatk/haplotypecaller"
+        "v4.0.0/bio/gatk/haplotypecaller"
 
 
 rule variation_combine:
@@ -27,7 +27,7 @@ rule variation_combine:
         gvcf=temp("results/variation/gvcf/all.g.vcf"),
         gvcf_idx=temp("results/variation/gvcf/all.g.vcf.idx"),
     wrapper:
-        "v3.7.0/bio/gatk/combinegvcfs"
+        "v4.0.0/bio/gatk/combinegvcfs"
 
 
 rule variation_genotype:
@@ -40,7 +40,7 @@ rule variation_genotype:
         vcf=temp("results/variation/vcf/all.vcf"),
         vcf_idx=temp("results/variation/vcf/all.vcf.idx"),
     wrapper:
-        "v3.7.0/bio/gatk/genotypegvcfs"
+        "v4.0.0/bio/gatk/genotypegvcfs"
 
 
 rule variation_select:
@@ -55,7 +55,7 @@ rule variation_select:
     params:
         extra="--select-type-to-include SNP",
     wrapper:
-        "v3.7.0/bio/gatk/selectvariants"
+        "v4.0.0/bio/gatk/selectvariants"
 
 
 rule variation_filter:
@@ -77,7 +77,7 @@ rule variation_filter:
             "ReadPosRankSum": "ReadPosRankSum < -8.0",
         },
     wrapper:
-        "v3.7.0/bio/gatk/variantfiltration"
+        "v4.0.0/bio/gatk/variantfiltration"
 
 
 rule variation_cleanup:
@@ -92,7 +92,7 @@ rule variation_cleanup:
     params:
         extra="--exclude-filtered",
     wrapper:
-        "v3.7.0/bio/gatk/selectvariants"
+        "v4.0.0/bio/gatk/selectvariants"
 
 
 rule variation_gvcf_md5:

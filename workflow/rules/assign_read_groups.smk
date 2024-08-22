@@ -6,7 +6,7 @@ rule assign_read_groups:
     params:
         extra=lambda w: f"--RGPU {w.SAMPLE}_{w.UNIT} --RGSM {w.SAMPLE} --RGPL ILLUMINA --RGLB null --SORT_ORDER coordinate",
     wrapper:
-        "v3.7.0/bio/picard/addorreplacereadgroups"
+        "v4.0.0/bio/picard/addorreplacereadgroups"
 
 
 rule assign_read_groups_index:
@@ -15,7 +15,7 @@ rule assign_read_groups_index:
     output:
         temp(temp("results/assign_read_groups/bam/{SAMPLE}_{UNIT}.bam.bai")),
     wrapper:
-        "v3.7.0/bio/samtools/index"
+        "v4.0.0/bio/samtools/index"
 
 
 rule assign_read_groups_md5:

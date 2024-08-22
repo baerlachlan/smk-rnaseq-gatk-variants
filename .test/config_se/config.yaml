@@ -16,6 +16,9 @@ ref:
 ## (i.e. for STAR's --sjdbOverhang paramter)
 read_length: 98
 
+## Boolean specifying whether FastQC output is desired
+fastqc: True
+
 ## Utilise UMIs for deduplication of reads
 ## UMIs must be specified in the read ID header with separator ":"
 ## Software such as UMI-tools or fastp can transfer this information if it does not already exist

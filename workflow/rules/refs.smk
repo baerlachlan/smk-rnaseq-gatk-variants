@@ -7,7 +7,7 @@ rule genome_get:
         build=config["ref"]["build"],
         release=config["ref"]["release"],
     wrapper:
-        "v3.7.0/bio/reference/ensembl-sequence"
+        "v4.0.0/bio/reference/ensembl-sequence"
 
 
 rule genome_index:
@@ -18,7 +18,7 @@ rule genome_index:
     params:
         extra="",
     wrapper:
-        "v3.7.0/bio/samtools/faidx"
+        "v4.0.0/bio/samtools/faidx"
 
 
 rule genome_dict:
@@ -29,7 +29,7 @@ rule genome_dict:
     params:
         extra="",
     wrapper:
-        "v3.7.0/bio/picard/createsequencedictionary"
+        "v4.0.0/bio/picard/createsequencedictionary"
 
 
 rule annotation_get:
@@ -41,7 +41,7 @@ rule annotation_get:
         release=config["ref"]["release"],
         flavor="",
     wrapper:
-        "v3.7.0/bio/reference/ensembl-annotation"
+        "v4.0.0/bio/reference/ensembl-annotation"
 
 
 rule star_index:
@@ -54,7 +54,7 @@ rule star_index:
         sjdbOverhang=int(config["read_length"]) - 1,
         extra="",
     wrapper:
-        "v3.7.0/bio/star/index"
+        "v4.0.0/bio/star/index"
 
 
 rule known_variants_get:
@@ -68,7 +68,7 @@ rule known_variants_get:
         release=config["ref"]["release"],
         type="all",
     wrapper:
-        "v3.7.0/bio/reference/ensembl-variation"
+        "v4.0.0/bio/reference/ensembl-variation"
 
 
 rule known_variants_index:
@@ -79,4 +79,4 @@ rule known_variants_index:
     params:
         "-p vcf",
     wrapper:
-        "v3.7.0/bio/tabix/index"
+        "v4.0.0/bio/tabix/index"

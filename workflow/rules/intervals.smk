@@ -16,4 +16,4 @@ rule bed_to_intervals:
     output:
         temp("resources/exons.interval_list"),
     wrapper:
-        "v3.7.0/bio/picard/bedtointervallist"
+        "v4.0.0/bio/picard/bedtointervallist"

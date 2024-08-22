@@ -7,7 +7,7 @@ rule split_n_cigar_reads:
         temp("results/split_n_cigar_reads/bam/{SAMPLE}.bam"),
         bam_idx=temp("results/split_n_cigar_reads/bam/{SAMPLE}.bai"),
     wrapper:
-        "v3.7.0/bio/gatk/splitncigarreads"
+        "v4.0.0/bio/gatk/splitncigarreads"
 
 
 rule split_n_cigar_reads_md5:

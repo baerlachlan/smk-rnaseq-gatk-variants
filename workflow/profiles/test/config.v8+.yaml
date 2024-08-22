@@ -1,0 +1,175 @@
+default-resources:
+  slurm_extra: "''"
+
+set-threads:
+  ## refs
+  genome_get: 1
+  genome_index: 1
+  genome_dict: 1
+  annotation_get: 1
+  star_index: 8
+  known_variants_get: 1
+  known_variants_index: 1
+  ## intervals
+  gtf_to_bed: 1
+  bed_to_intervals: 1
+  ## fastqc
+  fastqc_raw: 1
+  fastqc_trim: 1
+  fastqc_align: 1
+  ## trim
+  trim_se: 1
+  trim_pe: 1
+  trim_md5: 1
+  ## align
+  align: 4
+  align_md5: 1
+  ## assign_read_groups
+  assign_read_groups: 1
+  assign_read_groups_index: 1
+  assign_read_groups_md5: 1
+  ## group_umis
+  group_umis_se: 1
+  group_umis_pe: 1
+  group_umis_md5: 1
+  ## mark_duplicates
+  mark_duplicates: 1
+  mark_duplicates_umi: 1
+  mark_duplicates_md5: 1
+  ## split_n_cigar_reads
+  split_n_cigar_reads: 2
+  split_n_cigar_reads_md5: 2
+  ## bqsr
+  bqsr_firstpass: 2
+  bqsr_apply: 2
+  bqsr_apply_md5: 2
+  ## variation
+  variation_call: 2
+  variation_combine: 2
+  variation_genotype: 2
+  variation_select: 2
+  variation_filter: 2
+  variation_cleanup: 2
+  variation_gvcf_md5: 2
+  variation_vcf_md5: 2
+
+set-resources:
+  ## refs
+  genome_index:
+    runtime: 10
+    mem_mb: 1024
+  genome_dict:
+    runtime: 10
+    mem_mb: 1024
+  star_index:
+    runtime: 30
+    mem_mb: 32768
+  known_variants_index:
+    runtime: 10
+    mem_mb: 1024
+  ## intervals
+  gtf_to_bed:
+    runtime: 10
+    mem_mb: 1024
+  bed_to_intervals:
+    runtime: 10
+    mem_mb: 1024
+  ## fastqc
+  fastqc_raw:
+    runtime: 10
+    mem_mb: 2048
+  fastqc_trim:
+    runtime: 10
+    mem_mb: 2048
+  fastqc_align:
+    runtime: 10
+    mem_mb: 2048
+  ## trim
+  trim_se:
+    runtime: 10
+    mem_mb: 2048
+  trim_pe:
+    runtime: 10
+    mem_mb: 2048
+  trim_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## align
+  align:
+    runtime: 10
+    mem_mb: 32768
+  align_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## assign_read_groups
+  assign_read_groups:
+    runtime: 10
+    mem_mb: 1024
+  assign_read_groups_index:
+    runtime: 10
+    mem_mb: 1024
+  assign_read_groups_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## group_umis
+  group_umis_se:
+    runtime: 10
+    mem_mb: 1024
+  group_umis_pe:
+    runtime: 10
+    mem_mb: 1024
+  group_umis_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## mark_duplicates
+  mark_duplicates:
+    runtime: 10
+    mem_mb: 1024
+  mark_duplicates_umi:
+    runtime: 10
+    mem_mb: 1024
+  mark_duplicates_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## split_n_cigar_reads
+  split_n_cigar_reads:
+    runtime: 10
+    mem_mb: 1024
+  split_n_cigar_reads_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## bqsr
+  bqsr_firstpass:
+    runtime: 10
+    mem_mb: 1024
+  bqsr_apply:
+    runtime: 10
+    mem_mb: 1024
+  bqsr_apply_md5:
+    runtime: 10
+    mem_mb: 1024
+  ## variation
+  variation_call:
+    runtime: 10
+    mem_mb: 1024
+  variation_combine:
+    runtime: 10
+    mem_mb: 1024
+  variation_genotype:
+    runtime: 10
+    mem_mb: 1024
+  variation_select:
+    runtime: 10
+    mem_mb: 1024
+  variation_filter:
+    runtime: 10
+    mem_mb: 1024
+  variation_cleanup:
+    runtime: 10
+    mem_mb: 1024
+  variation_gvcf_md5:
+    runtime: 10
+    mem_mb: 1024
+  variation_vcf_md5:
+    runtime: 10
+    mem_mb: 1024

@@ -1,0 +1,5 @@
+.snakemake/
+logs/
+resources/
+workflow/profiles/default
+results/

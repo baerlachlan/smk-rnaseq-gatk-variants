@@ -5,7 +5,7 @@ rule mark_duplicates:
         bam=temp("results/mark_duplicates/bam/{SAMPLE}.bam"),
         metrics="results/mark_duplicates/log/{SAMPLE}.metrics.txt",
     wrapper:
-        "v3.7.0/bio/picard/markduplicates"
+        "v4.0.0/bio/picard/markduplicates"
 
 
 rule mark_duplicates_umi:
@@ -17,7 +17,7 @@ rule mark_duplicates_umi:
     params:
         extra="--BARCODE_TAG BX",
     wrapper:
-        "v3.7.0/bio/picard/markduplicates"
+        "v4.0.0/bio/picard/markduplicates"
 
 
 rule mark_duplicates_md5:
