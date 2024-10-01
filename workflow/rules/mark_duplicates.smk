@@ -25,7 +25,9 @@ rule mark_duplicates_md5:
         mark_duplicates_md5_inputs(),
     output:
         "results/mark_duplicates/bam/md5.txt",
+    conda:
+        "../envs/parallel.yml"
     shell:
         """
-        md5sum {input} > {output}
+        echo "{input}" | tr " " "\n" | parallel -j {threads} md5sum  > {output}
         """

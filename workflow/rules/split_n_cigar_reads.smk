@@ -15,7 +15,9 @@ rule split_n_cigar_reads_md5:
         expand("results/split_n_cigar_reads/bam/{SAMPLE}.bam", SAMPLE=samples["sample"]),
     output:
         "results/split_n_cigar_reads/bam/md5.txt",
+    conda:
+        "../envs/parallel.yml"
     shell:
         """
-        md5sum {input} > {output}
+        echo "{input}" | tr " " "\n" | parallel -j {threads} md5sum  > {output}
         """

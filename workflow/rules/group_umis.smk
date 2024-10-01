@@ -52,7 +52,9 @@ rule group_umis_md5:
         group_umis_md5_inputs(),
     output:
         "results/group_umis/bam/md5.txt",
+    conda:
+        "../envs/parallel.yml"
     shell:
         """
-        md5sum {input} > {output}
+        echo "{input}" | tr " " "\n" | parallel -j {threads} md5sum  > {output}
         """

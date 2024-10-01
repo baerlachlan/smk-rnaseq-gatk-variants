@@ -20,30 +20,30 @@ set-threads:
   ## trim
   trim_se: 4
   trim_pe: 4
-  trim_md5: 1
+  trim_md5: 8
   ## align
   align: 16
   align_index: 4
-  align_md5: 1
+  align_md5: 8
   ## assign_read_groups
   assign_read_groups: 2
   assign_read_groups_index: 4
-  assign_read_groups_md5: 2
+  assign_read_groups_md5: 8
   ## group_umis
   group_umis_se: 2
   group_umis_pe: 2
-  group_umis_md5: 2
+  group_umis_md5: 8
   ## mark_duplicates
   mark_duplicates: 2
   mark_duplicates_umi: 2
-  mark_duplicates_md5: 2
+  mark_duplicates_md5: 8
   ## split_n_cigar_reads
   split_n_cigar_reads: 8
-  split_n_cigar_reads_md5: 2
+  split_n_cigar_reads_md5: 8
   ## bqsr
   bqsr_firstpass: 2
   bqsr_apply: 2
-  bqsr_apply_md5: 2
+  bqsr_apply_md5: 8
   ## variation
   variation_call: 4
   variation_combine: 2
@@ -51,8 +51,8 @@ set-threads:
   variation_select: 2
   variation_filter: 2
   variation_cleanup: 2
-  variation_gvcf_md5: 2
-  variation_vcf_md5: 2
+  variation_gvcf_md5: 8
+  variation_vcf_md5: 8
 
 set-resources:
   ## refs

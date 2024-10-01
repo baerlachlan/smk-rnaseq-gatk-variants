@@ -103,9 +103,11 @@ rule variation_gvcf_md5:
         combined="results/variation/gvcf/all.g.vcf",
     output:
         "results/variation/gvcf/md5.txt",
+    conda:
+        "../envs/parallel.yml"
     shell:
         """
-        md5sum {input.singles} {input.combined} > {output}
+        echo "{input}" | tr " " "\n" | parallel -j {threads} md5sum  > {output}
         """
 
 
@@ -119,7 +121,9 @@ rule variation_vcf_md5:
         ],
     output:
         "results/variation/vcf/md5.txt",
+    conda:
+        "../envs/parallel.yml"
     shell:
         """
-        md5sum {input} > {output}
+        echo "{input}" | tr " " "\n" | parallel -j {threads} md5sum  > {output}
         """

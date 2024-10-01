@@ -23,7 +23,9 @@ rule assign_read_groups_md5:
         assign_read_groups_md5_inputs(),
     output:
         "results/assign_read_groups/bam/md5.txt",
+    conda:
+        "../envs/parallel.yml"
     shell:
         """
-        md5sum {input} > {output}
+        echo "{input}" | tr " " "\n" | parallel -j {threads} md5sum  > {output}
         """
